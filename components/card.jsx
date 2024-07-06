@@ -1,36 +1,59 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Image, TouchableHighlight} from 'react-native';
+import { Stopwatch } from 'react-native-stopwatch-timer';
 
-const Card = ({ consoleNumber, handleTouch}) => {
+const Card = ({ consoleNumber, isOccupied}) => {
 
-    const onPress = () => {
-        handleTouch(consoleNumber)
-      };
-
+  const [isStopwatchStart, setIsStopwatchStart] = useState(false);
+  const [resetStopwatch, setResetStopwatch] = useState(false);
 
   return (
     <View
     style = {styles.box}>
 
-        <TouchableOpacity style={[
+        <View style={[
                 styles.container,
                 {
                 flexDirection: 'row',
                 },
-            ]} 
-            onPress={onPress}>        
-
-
+            ]}>        
             <Image
             style={styles.img}
             source={require('../assets/images/playstationlogo.png')} 
             />
 
-            <Text>
+            <Text
+            style = {styles.txt}>
                 {consoleNumber}
             </Text>
 
-        </TouchableOpacity>
+            <View>
+              <Stopwatch
+              laps
+              start={isStopwatchStart}
+              reset={resetStopwatch}
+              />
+
+              <TouchableHighlight
+              onPress={() => {
+                setIsStopwatchStart(!isStopwatchStart);
+                setResetStopwatch(false);
+              }}>
+                <Text>
+                  {!isStopwatchStart ? 'START' : 'STOP'}
+                </Text>
+              </TouchableHighlight>
+
+              <TouchableHighlight
+                  onPress={() => {
+                    setIsStopwatchStart(false);
+                    setResetStopwatch(true);
+                  }}>
+                  <Text>RESET</Text>
+              </TouchableHighlight>
+            </View>
+
+        </View>
 
     </View>
 
@@ -41,9 +64,8 @@ const Card = ({ consoleNumber, handleTouch}) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
         padding: 10,
-        gap: 20
+        gap: 10
       },
     box: {
         flex: 1, 
@@ -52,9 +74,15 @@ const styles = StyleSheet.create({
         borderRadius: 10
       },
     img: {
-        width: 100, 
-        height: 80
-    }
+        width: 40, 
+        height: 40,
+        resizeMode: 'contain'
+    },
+    txt: {
+        fontSize: 25,
+        fontWeight: 'bold',
+        color: 'rgba(0, 0, 0, 0.)'
+    } 
 });
 
 export default Card;
