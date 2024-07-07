@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TouchableHighlight} from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Alert} from 'react-native';
 import { Stopwatch } from 'react-native-stopwatch-timer';
 
-const Card = ({ consoleNumber, isOccupied}) => {
+const Card = ({ consoleNumber}) => {
 
   const [isStopwatchStart, setIsStopwatchStart] = useState(false);
   const [resetStopwatch, setResetStopwatch] = useState(false);
@@ -16,57 +16,99 @@ const Card = ({ consoleNumber, isOccupied}) => {
                 {
                 flexDirection: 'row',
                 },
-            ]}>        
-            <Image
-            style={styles.img}
-            source={require('../assets/images/playstationlogo.png')} 
-            />
+            ]}>
 
-            <Text
-            style = {styles.txt}>
-                {consoleNumber}
-            </Text>
+           <View style={[
+                styles.container,
+                {
+                flexDirection: 'row',
+                },
+            ]}>
+     
+                <Image
+                style={styles.img}
+                source={
+                  isStopwatchStart
+                    ? require('../assets/images/playstationon.png')
+                    : require('../assets/images/playstationoff.png')
+                } 
+                />
 
-            <View>
-              <Stopwatch
-              laps
-              start={isStopwatchStart}
-              reset={resetStopwatch}
-              />
+                <Text
+                style = {styles.txt}>
+                    {consoleNumber}
+                </Text>
 
-              <TouchableHighlight
+            </View>
+
+              <View style = {styles.container} >
+                <Stopwatch 
+                laps
+                start={isStopwatchStart}
+                reset={resetStopwatch}
+                />
+
+            
+            <View style={[
+                            styles.container,
+                            {
+                            flexDirection: 'row',
+                            },
+                        ]}>
+
+              <TouchableOpacity
               onPress={() => {
                 setIsStopwatchStart(!isStopwatchStart);
                 setResetStopwatch(false);
               }}>
-                <Text>
-                  {!isStopwatchStart ? 'START' : 'STOP'}
-                </Text>
-              </TouchableHighlight>
-
-              <TouchableHighlight
+                 <Image
+                    source={
+                      isStopwatchStart
+                        ? require('../assets/images/pause.png')
+                        : require('../assets/images/play.png')
+                    }
+                    style={styles.btn}
+              />
+              </TouchableOpacity>
+              <TouchableOpacity
+                  style = {styles.btn}
                   onPress={() => {
-                    setIsStopwatchStart(false);
-                    setResetStopwatch(true);
+
+                    Alert.alert('Naplata', 'Jeste li sigurni da želite izvršiti naplatu?', [
+                      {
+                        text: 'Odustani',
+                        onPress: () => {},
+                        style: 'cancel',
+                      },
+                      {text: 'Nastavi', onPress: () => 
+                       {
+                          setIsStopwatchStart(false);
+                          setResetStopwatch(true);
+                       } 
+                      },
+                    ]);
+
                   }}>
-                  <Text>RESET</Text>
-              </TouchableHighlight>
+                  <Image 
+                    style={styles.btn}
+                    source={require('../assets/images/money.png')}
+                  />
+              </TouchableOpacity>
+
+              </View>
             </View>
-
         </View>
-
     </View>
-
-
   );
 };
 
 const styles = StyleSheet.create({
+
     container: {
-        flex: 1,
-        padding: 10,
-        gap: 10
-      },
+      flex: 1,
+      padding: 5,
+      gap: 12
+    },
     box: {
         flex: 1, 
         backgroundColor: 'rgba(0, 0, 0, 0.06)',
@@ -74,15 +116,21 @@ const styles = StyleSheet.create({
         borderRadius: 10
       },
     img: {
-        width: 40, 
-        height: 40,
+        width: 45, 
+        height: 45,
         resizeMode: 'contain'
     },
     txt: {
         fontSize: 25,
         fontWeight: 'bold',
         color: 'rgba(0, 0, 0, 0.)'
-    } 
+    },
+    btn: {
+      width: 47,
+      height: 40,
+      resizeMode: 'fit'
+    }
+    
 });
 
 export default Card;
