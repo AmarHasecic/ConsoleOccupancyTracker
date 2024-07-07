@@ -33,7 +33,6 @@ const Card = ({ consoleNumber}) => {
                     : require('../assets/images/playstationoff.png')
                 } 
                 />
-
                 <Text
                 style = {styles.txt}>
                     {consoleNumber}
@@ -41,19 +40,23 @@ const Card = ({ consoleNumber}) => {
 
             </View>
 
-              <View style = {styles.container} >
+              <View style = {[
+                styles.container,
+                {
+                  paddingLeft: 10
+                }
+              ]} >
                 <Stopwatch 
                 laps
                 start={isStopwatchStart}
                 reset={resetStopwatch}
+                options={stopwatchStyle}
                 />
-
-            
             <View style={[
-                            styles.container,
-                            {
-                            flexDirection: 'row',
-                            },
+                          styles.btnsConstainer,
+                          {
+                          flexDirection: 'row',                     
+                          },
                         ]}>
 
               <TouchableOpacity
@@ -123,14 +126,35 @@ const styles = StyleSheet.create({
     txt: {
         fontSize: 25,
         fontWeight: 'bold',
-        color: 'rgba(0, 0, 0, 0.)'
+        color: 'rgba(0, 0, 0, 0.6)'
     },
     btn: {
       width: 47,
       height: 40,
       resizeMode: 'fit'
-    }
+    },
+    btnsConstainer: {
+      flex: 1,
+      justifyContent: 'center',
+      gap: 14
+    },
     
 });
+
+const stopwatchStyle = {
+  container: {
+    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+    padding: 5,
+    borderRadius: 5,
+    width: 150,
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 24,
+    color: 'black',
+    marginLeft: 7,
+  },
+};
+
 
 export default Card;
