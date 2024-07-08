@@ -2,8 +2,22 @@ import { Stack } from 'expo-router/stack';
 
 export default function Layout() {
   return (
-    <Stack>
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-    </Stack>
+    <Stack
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: '#f4511e',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      }
+    }}>
+      <Stack.Screen name="index"
+      options={{ title: 'Konzole' }}
+      />
+      <Stack.Screen name="reciept"
+      options={{ title: 'Račun' }}
+      />
+  </Stack>
   );
-}
+};

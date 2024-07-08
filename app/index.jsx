@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image} from 'react-native';
-import Card from '../../components/card';
+import { View, StyleSheet} from 'react-native';
+import Card from '../components/card';
 
 
-const Index = () => {
+const Consoles = () => {
 
   return (
     <View
@@ -42,6 +42,6 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Index;
+export default Consoles;
 
                                                                           

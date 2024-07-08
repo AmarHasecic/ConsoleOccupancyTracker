@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Alert} from 'react-native';
 import { Stopwatch } from 'react-native-stopwatch-timer';
+import { useNavigation } from 'expo-router';  
 
 const Card = ({ consoleNumber}) => {
 
   const [isStopwatchStart, setIsStopwatchStart] = useState(false);
   const [resetStopwatch, setResetStopwatch] = useState(false);
+  const navigation = useNavigation()
 
   return (
     <View
@@ -87,6 +89,7 @@ const Card = ({ consoleNumber}) => {
                        {
                           setIsStopwatchStart(false);
                           setResetStopwatch(true);
+                          navigation.navigate("reciept", { screen: "/reciept" })
                        } 
                       },
                     ]);
