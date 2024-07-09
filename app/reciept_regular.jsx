@@ -35,12 +35,12 @@ const styles = StyleSheet.create({
 
   animation: {
     width: "100%",
-    height: "50%"
+    height: "30.5%"
   },
   moneyBox: {
     backgroundColor: "#ff4500",
     width: "100%",
-    height: 200
+    flex: 1
   }
 });
 
