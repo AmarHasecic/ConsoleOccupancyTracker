@@ -3,7 +3,7 @@ import { View, StyleSheet, Text} from 'react-native';
 import {useLocalSearchParams} from 'expo-router';
 
 
-const Reciept = () => {
+const RecieptHappy = () => {
 
   const  parms  = useLocalSearchParams();
   console.log(parms);
@@ -20,4 +20,4 @@ const styles = StyleSheet.create({
     
 });
 
-export default Reciept;
+export default RecieptHappy;
