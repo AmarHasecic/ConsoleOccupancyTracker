@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     position: 'absolute',
-    top: -350, 
+    top: "-45%", 
   },
   row: {
     flex: 1,
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   moneyBar: {
     backgroundColor: "#ff4500",
     width: "100%",
-    height: 400
+    height: "30%"
   }
 });
 
