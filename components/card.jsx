@@ -48,12 +48,7 @@ const Card = ({ consoleNumber}) => {
 
             </View>
 
-              <View style = {[
-                styles.container,
-                {
-                  paddingLeft: 10
-                }
-              ]} >
+              <View style={styles.stopwatchAndButtonsContainer}> 
                 <Stopwatch 
                 laps
                 start={isStopwatchStart}
@@ -139,7 +134,8 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       padding: 5,
-      gap: 12
+      gap: 12,
+      
     },
     box: {
         flex: 1, 
@@ -172,8 +168,13 @@ const styles = StyleSheet.create({
     btnsConstainer: {
       flex: 1,
       justifyContent: 'center',
-      gap: 14
+      gap: 20,
+      paddingTop: 10
     },
+    stopwatchAndButtonsContainer: {
+      paddingHorizontal: 20,
+      paddingTop: 5
+    }
     
 });
 
