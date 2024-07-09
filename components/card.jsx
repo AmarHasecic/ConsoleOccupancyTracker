@@ -10,9 +10,6 @@ const Card = ({ consoleNumber}) => {
   const router = useRouter();
   
   var stopwatchTime;
-  var startTime;
-  var endTime;
-
 
   return (
     <View
@@ -22,6 +19,7 @@ const Card = ({ consoleNumber}) => {
                 styles.container,
                 {
                 flexDirection: 'row',
+                gap: 40
                 },
             ]}>
 
@@ -66,23 +64,24 @@ const Card = ({ consoleNumber}) => {
                         ]}>
 
               <TouchableOpacity
+              style = {styles.btn}
               onPress={() => {
                 setIsStopwatchStart(!isStopwatchStart);
                 setResetStopwatch(false);
               }}>
                  <Image
+                    style = {styles.btn}
                     source={
                       isStopwatchStart
                         ? require('../assets/images/pause.png')
                         : require('../assets/images/play.png')
                     }
-                    style={styles.btn}
               />
               </TouchableOpacity>
               <TouchableOpacity
                   style = {styles.btn}
                   onPress={() => {
-
+                    
                     Alert.alert('Naplata', 'Jeste li sigurni da želite izvršiti naplatu?', [
                       {
                         text: 'Odustani',
@@ -161,33 +160,39 @@ const styles = StyleSheet.create({
         color: 'rgba(0, 0, 0, 0.9)'
     },
     btn: {
-      width: 47,
-      height: 40,
-      resizeMode: 'fit'
+      flex: 1,
+      width: '100%', 
+      height: '100%',
+      resizeMode: "contain" 
     },
     btnsConstainer: {
       flex: 1,
       justifyContent: 'center',
-      gap: 20,
-      paddingTop: 10
+      paddingVertical: 6
     },
     stopwatchAndButtonsContainer: {
-      paddingHorizontal: 20,
-      paddingTop: 5
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingTop: 5,
+      paddingEnd: 10,
     }
     
 });
 
 const stopwatchStyle = {
   container: {
+    flex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.1)',
     padding: 5,
     borderRadius: 5,
-    width: 150,
+    width: "100%",
+    height: "100%",
     alignItems: 'center',
+    justifyContent: 'center'
   },
   text: {
-    fontSize: 24,
+    fontSize: 25,
     color: 'black',
     marginLeft: 7,
   },
