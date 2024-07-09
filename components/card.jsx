@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Alert} from 'react-native';
 import { Stopwatch } from 'react-native-stopwatch-timer';
-import { useNavigation } from 'expo-router';  
+import { useRouter } from 'expo-router';  
 
 const Card = ({ consoleNumber}) => {
 
   const [isStopwatchStart, setIsStopwatchStart] = useState(false);
   const [resetStopwatch, setResetStopwatch] = useState(false);
-  const navigation = useNavigation()
+  const router = useRouter();
+  
+  var stopwatchTime;
+  var startTime;
+  var endTime;
+
 
   return (
     <View
@@ -36,7 +41,8 @@ const Card = ({ consoleNumber}) => {
                 } 
                 />
                 <Text
-                style = {styles.txt}>
+                style = {
+                  isStopwatchStart ? styles.textBlack : styles.textGray}>
                     {consoleNumber}
                 </Text>
 
@@ -53,6 +59,9 @@ const Card = ({ consoleNumber}) => {
                 start={isStopwatchStart}
                 reset={resetStopwatch}
                 options={stopwatchStyle}
+                getTime={(time) => {
+                  stopwatchTime = time;
+                }}
                 />
             <View style={[
                           styles.btnsConstainer,
@@ -89,7 +98,24 @@ const Card = ({ consoleNumber}) => {
                        {
                           setIsStopwatchStart(false);
                           setResetStopwatch(true);
-                          navigation.navigate("reciept", { screen: "/reciept" })
+
+                          let currentTime = new Date();
+                          let hours = currentTime.getHours();
+
+                          /*
+                          if ((hours >= 5 && hours <= 7)
+                          || (hours >= 17 && hours <= 19)){
+                            //Happy Hours
+                            router.push({ pathname: "/reciept_happy", params: { console: consoleNumber, timeSpent: stopwatchTime } });
+                          }
+                          else{
+                            //Regular Hours
+                            router.push({ pathname: "/reciept_regular", params: { console: consoleNumber, timeSpent: stopwatchTime } });
+                          }
+                          */
+
+                          router.push({ pathname: "/reciept_regular", params: { console: consoleNumber, timeSpent: stopwatchTime } });
+                          
                        } 
                       },
                     ]);
@@ -126,10 +152,17 @@ const styles = StyleSheet.create({
         height: 45,
         resizeMode: 'contain'
     },
-    txt: {
+    textGray: {
         fontSize: 25,
         fontWeight: 'bold',
-        color: 'rgba(0, 0, 0, 0.6)'
+        paddingTop: 3,
+        color: 'rgba(0, 0, 0, 0.7)'
+    },
+    textBlack: {
+        fontSize: 25,
+        fontWeight: 'bold',
+        paddingTop: 3,
+        color: 'rgba(0, 0, 0, 0.9)'
     },
     btn: {
       width: 47,

@@ -5,7 +5,7 @@ export default function Layout() {
     <Stack
     screenOptions={{
       headerStyle: {
-        backgroundColor: '#f4511e',
+        backgroundColor: '#ff4500',
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
@@ -15,9 +15,15 @@ export default function Layout() {
       <Stack.Screen name="index"
       options={{ title: 'Konzole' }}
       />
-      <Stack.Screen name="reciept"
-      options={{ title: 'Račun' }}
-      />
+
+      <Stack.Screen name="reciept_regular"
+      options={{ title: 'Račun' }}>
+      </Stack.Screen>
+
+      <Stack.Screen name="reciept_happy"
+      options={{ title: 'Račun' }}>
+      </Stack.Screen>
+
   </Stack>
   );
 };

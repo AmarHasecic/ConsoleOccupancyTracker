@@ -3,7 +3,7 @@ import { View, StyleSheet} from 'react-native';
 import Card from '../components/card';
 
 
-const Consoles = () => {
+const Index = () => {
 
   return (
     <View
@@ -42,6 +42,6 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Consoles;
+export default Index;
 
                                                                           
