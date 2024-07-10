@@ -1,8 +1,14 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import LottieView from 'lottie-react-native';
+import { useLocalSearchParams } from 'expo-router'
+ 
 
 const RecieptRegular = () => {
+
+  const  params  = useLocalSearchParams()
+  console.log(params)
+
   return (
     <View style={
       styles.row
