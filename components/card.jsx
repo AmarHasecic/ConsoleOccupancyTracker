@@ -93,10 +93,10 @@ const Card = ({ consoleNumber}) => {
                           setIsStopwatchStart(false);
                           setResetStopwatch(true);
 
+                          /*
                           let currentTime = new Date();
                           let hours = currentTime.getHours();
 
-                          /*
                           if ((hours >= 5 && hours <= 7)
                           || (hours >= 17 && hours <= 19)){
                             //Happy Hours
@@ -108,7 +108,11 @@ const Card = ({ consoleNumber}) => {
                           }
                           */
 
-                          router.push({ pathname: "/reciept_regular", params: { consoleNum: consoleNumber, timeSpent: stopwatchTime } });
+                          const [hours, minutes, seconds] = stopwatchTime.split(':');
+                          var money = 5*(hours + minutes/60);
+                          var roundedMoney = money.toFixed(2);
+
+                          router.push({ pathname: "/reciept_regular", params: { consoleNum: consoleNumber, timeSpent: stopwatchTime, moneySpent: roundedMoney } });
                           
                        } 
                       },

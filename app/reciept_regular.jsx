@@ -24,7 +24,7 @@ const RecieptRegular = () => {
 
         <View style={styles.time}>
           <Text style={styles.timeText}>
-            {params.timeSpent}
+            {params.moneySpent} KM
           </Text>
         </View>
 
@@ -37,6 +37,7 @@ const RecieptRegular = () => {
           loop
         />
       </View>
+      
     </View>
   );
 }
