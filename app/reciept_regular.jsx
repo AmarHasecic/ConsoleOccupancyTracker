@@ -21,6 +21,7 @@ const RecieptRegular = () => {
     <View style={
       styles.column
     }>
+    <View style={{flex: 2}}>
       <View style={styles.moneyBar}>
 
         <View style={styles.time}>
@@ -45,7 +46,11 @@ const RecieptRegular = () => {
                       style={styles.icon}
                       source={require('../assets/images/calendar.png')}
             />
-            <Text style={styles.textInfo}>{date}</Text>
+            <View style={styles.textInfo}>
+              <Text style={{borderColor: 'black',
+                borderWidth: 3
+              }} >{date}</Text>
+            </View>
           </View>
 
           <View style={ styles.row }>
@@ -53,7 +58,11 @@ const RecieptRegular = () => {
                       style={styles.icon}
                       source={require('../assets/images/playlogo.png')}
             />
-            <Text style={styles.textInfo}>{params.consoleNum}</Text>
+            <View style={styles.textInfo}>
+              <Text style={{borderColor: 'black',
+                borderWidth: 3
+              }} >{params.consoleNum}</Text>
+            </View>
           </View>
 
           <View style={ styles.row }>
@@ -61,10 +70,19 @@ const RecieptRegular = () => {
                       style={styles.icon}
                       source={require('../assets/images/clock.png')}
             />
-            <Text style={styles.textInfo}>{params.timeSpent}</Text>
+            <View style={styles.textInfo}>
+              <Text style={{borderColor: 'black',
+                borderWidth: 3
+              }} >{params.timeSpent}</Text>
+            </View>
           </View>
 
         </View>
+
+       <View style={styles.blank}>
+
+       </View>
+    </View>
     </View>
   );
 }
@@ -80,7 +98,8 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     position: 'absolute',
-    top: "-45%"
+    top: "-45%",
+
   },
   column: {
     flex: 1,
@@ -88,12 +107,13 @@ const styles = StyleSheet.create({
   },
   row: {
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   moneyBar: {
     backgroundColor: "#ff4500",
     width: "100%",
-    height: "30%"
+    height: "35%"
   },
   time: {
     flex: 1
@@ -102,33 +122,36 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
     fontSize: scaleFont(50),
-    paddingTop: "20%",
+    paddingTop: "25%",
     color: 'rgba(0, 0, 0, 0.7)',
     fontWeight: 'bold',
     adjustsFontSizeToFit: true,
     allowFontScaling: true
   },
   icon: {
-      flex: 1,
+      flex:1,
       width: '100%', 
       height: '100%',
       resizeMode: "contain" 
     },
   containerInfo: {
+      flex: 2,
       flexDirection: 'column',
-      width: "50%",
-      height: "65%",
-      position: 'absolute',
-      paddingTop: "70%",
-      marginTop: "7%",
-      gap: 15
+      width: "70%",
+      gap: 10
   },
   textInfo: {
-    flex: 1,
+    flex: 2,
     width: "100%",
-    height: "100%"
-  }
-  
+    height: "100%",
+    fontSize: scaleFont(13),
+    justifyContent: 'center',
+    borderColor: 'black',
+    borderWidth: 4
+  },
+  blank: {
+    flex: 3
+  } 
 });
 
 export default RecieptRegular;
