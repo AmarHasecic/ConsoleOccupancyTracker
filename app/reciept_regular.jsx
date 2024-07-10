@@ -1,19 +1,32 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import LottieView from 'lottie-react-native';
 import { useLocalSearchParams } from 'expo-router'
+import { Dimensions, PixelRatio } from 'react-native';
  
+
+const scaleFont = (size) => {
+  const screenWidth = Dimensions.get('window').width;
+  const scaleFactor = screenWidth / 360; 
+  const newSize = size * scaleFactor;
+  return Math.round(PixelRatio.roundToNearestPixel(newSize));
+};
 
 const RecieptRegular = () => {
 
-  const  params  = useLocalSearchParams()
-  console.log(params)
+  const  params  = useLocalSearchParams();
 
   return (
     <View style={
       styles.row
     }>
       <View style={styles.moneyBar}>
+
+        <View style={styles.time}>
+          <Text style={styles.timeText}>
+            {params.timeSpent}
+          </Text>
+        </View>
 
       </View>
       <View style={styles.container}>
@@ -49,7 +62,20 @@ const styles = StyleSheet.create({
     backgroundColor: "#ff4500",
     width: "100%",
     height: "30%"
-  }
+  },
+  time: {
+    flex: 1
+  },
+  timeText: {
+    flex: 1,
+    textAlign: 'center',
+    fontSize: scaleFont(50),
+    paddingTop: "20%",
+    color: 'rgba(0, 0, 0, 0.7)',
+    fontWeight: 'bold',
+    adjustsFontSizeToFit: true,
+    allowFontScaling: true
+  },
 });
 
 export default RecieptRegular;

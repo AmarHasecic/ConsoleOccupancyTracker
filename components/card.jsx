@@ -108,7 +108,7 @@ const Card = ({ consoleNumber}) => {
                           }
                           */
 
-                          router.push({ pathname: "/reciept_regular", params: { console: consoleNumber, timeSpent: stopwatchTime } });
+                          router.push({ pathname: "/reciept_regular", params: { consoleNum: consoleNumber, timeSpent: stopwatchTime } });
                           
                        } 
                       },
