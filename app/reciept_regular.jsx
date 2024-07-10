@@ -47,9 +47,7 @@ const RecieptRegular = () => {
                       source={require('../assets/images/calendar.png')}
             />
             <View style={styles.textInfo}>
-              <Text style={{borderColor: 'black',
-                borderWidth: 3
-              }} >{date}</Text>
+              <Text>{date}</Text>
             </View>
           </View>
 
@@ -59,9 +57,7 @@ const RecieptRegular = () => {
                       source={require('../assets/images/playlogo.png')}
             />
             <View style={styles.textInfo}>
-              <Text style={{borderColor: 'black',
-                borderWidth: 3
-              }} >{params.consoleNum}</Text>
+              <Text>{params.consoleNum}</Text>
             </View>
           </View>
 
@@ -71,9 +67,7 @@ const RecieptRegular = () => {
                       source={require('../assets/images/clock.png')}
             />
             <View style={styles.textInfo}>
-              <Text style={{borderColor: 'black',
-                borderWidth: 3
-              }} >{params.timeSpent}</Text>
+              <Text>{params.timeSpent}</Text>
             </View>
           </View>
 
@@ -146,8 +140,6 @@ const styles = StyleSheet.create({
     height: "100%",
     fontSize: scaleFont(13),
     justifyContent: 'center',
-    borderColor: 'black',
-    borderWidth: 4
   },
   blank: {
     flex: 3
