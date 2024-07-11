@@ -79,6 +79,18 @@ const Card = ({ consoleNumber}) => {
               />
               </TouchableOpacity>
               <TouchableOpacity
+              style = {styles.btn}
+              onPress={() => {
+          
+              }}>
+                 <Image
+                    style = {styles.chipsIcon}
+                    source={  
+                     require('../assets/images/snack.png')
+                    }
+              />
+              </TouchableOpacity>
+              <TouchableOpacity
                   style = {styles.btn}
                   onPress={() => {
                     
@@ -167,12 +179,13 @@ const styles = StyleSheet.create({
       flex: 1,
       width: '100%', 
       height: '100%',
-      resizeMode: "contain" 
+      resizeMode: "contain",
+      paddingHorizontal: 2
     },
     btnsConstainer: {
       flex: 1,
       justifyContent: 'center',
-      paddingVertical: 6
+      paddingVertical: 6,
     },
     stopwatchAndButtonsContainer: {
       flex: 1,
@@ -180,6 +193,13 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       paddingTop: 5,
       paddingEnd: 10,
+    },
+    chipsIcon: {
+      flex: 1,
+      width: '95%', 
+      height: '80%',
+      resizeMode: "contain"
+  
     }
     
 });
@@ -199,7 +219,8 @@ const stopwatchStyle = {
     fontSize: 25,
     color: 'black',
     marginLeft: 7,
-  },
+  }
+  
 };
 
 
