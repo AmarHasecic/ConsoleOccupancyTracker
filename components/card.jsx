@@ -79,18 +79,6 @@ const Card = ({ consoleNumber}) => {
               />
               </TouchableOpacity>
               <TouchableOpacity
-              style = {styles.btn}
-              onPress={() => {
-          
-              }}>
-                 <Image
-                    style = {styles.chipsIcon}
-                    source={  
-                     require('../assets/images/snack.png')
-                    }
-              />
-              </TouchableOpacity>
-              <TouchableOpacity
                   style = {styles.btn}
                   onPress={() => {
                     
