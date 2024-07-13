@@ -93,26 +93,18 @@ const Card = ({ consoleNumber}) => {
                           setIsStopwatchStart(false);
                           setResetStopwatch(true);
 
-                          /*
-                          let currentTime = new Date();
-                          let hours = currentTime.getHours();
-
-                          if ((hours >= 5 && hours <= 7)
-                          || (hours >= 17 && hours <= 19)){
-                            //Happy Hours
-                            router.push({ pathname: "/reciept_happy", params: { console: consoleNumber, timeSpent: stopwatchTime } });
-                          }
-                          else{
-                            //Regular Hours
-                            router.push({ pathname: "/reciept_regular", params: { console: consoleNumber, timeSpent: stopwatchTime } });
-                          }
-                          */
-
                           const [hours, minutes, seconds] = stopwatchTime.split(':');
-                          var money = 5*(hours + minutes/60);
-                          var roundedMoney = money.toFixed(2);
+                          var moneyRegular = 5*(hours + minutes/60);
+                          var moneyHappyHour = 3*(hours + minutes/60);
+                          var roundedMoneyeRegular = moneyRegular.toFixed(2);
+                          var roundedMoneyHappyHour = moneyHappyHour.toFixed(2);
 
-                          router.push({ pathname: "/reciept_regular", params: { consoleNum: consoleNumber, timeSpent: stopwatchTime, moneySpent: roundedMoney } });
+                          router.push({ pathname: "/reciept", params: { 
+                            consoleNum: consoleNumber, 
+                            timeSpent: stopwatchTime, 
+                            moneySpentRegular: roundedMoneyeRegular,
+                            moneySpentHappy: roundedMoneyHappyHour
+                          } });
                           
                        } 
                       },
