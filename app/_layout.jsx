@@ -16,7 +16,7 @@ export default function Layout() {
       options={{ title: 'Konzole' }}
       />
 
-      <Stack.Screen name="reciept"
+      <Stack.Screen name="receipt"
       options={{ title: 'Račun' }}>
       </Stack.Screen>
 
