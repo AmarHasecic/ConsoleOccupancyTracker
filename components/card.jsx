@@ -99,7 +99,7 @@ const Card = ({ consoleNumber}) => {
                           var roundedMoneyeRegular = moneyRegular.toFixed(2);
                           var roundedMoneyHappyHour = moneyHappyHour.toFixed(2);
 
-                          router.push({ pathname: "/reciept", params: { 
+                          router.push({ pathname: "/receipt", params: { 
                             consoleNum: consoleNumber, 
                             timeSpent: stopwatchTime, 
                             moneySpentRegular: roundedMoneyeRegular,
