@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image, TouchableOpacity, Dimensions, PixelRatio } from 'react-native';
-import LottieView from 'lottie-react-native';
+import { View, StyleSheet, Text, Image, TouchableOpacity, Dimensions, PixelRatio, ScrollView} from 'react-native';
 import { useLocalSearchParams, useNavigation } from 'expo-router';
 
 const scaleFont = (size) => {
@@ -18,51 +17,62 @@ const RecieptRegular = () => {
 
   return (
       <View style={styles.column}>
-        <View style={styles.moneyBar}>
-          <View style={styles.time}>
-            <Text style={styles.timeText}>
-              {params.moneySpent} KM
-            </Text>
-          </View>
-        </View>
-        <View style={styles.containerInfo}>
-          <View style={styles.row}>
-            <Image 
-              style={styles.icon}
-              source={require('../assets/images/calendar.png')}
-            />
-            <View style={styles.textInfo}>
-              <Text style={styles.text}>{date}</Text>
-            </View>
-          </View>
 
-          <View style={styles.row}>
-            <Image 
-              style={styles.iconLogo}
-              source={require('../assets/images/playlogo.png')}
-            />
-            <View style={styles.textInfo}>
-              <Text style={styles.text}>{params.consoleNum}</Text>
-            </View>
-          </View>
+        <View style={styles.moneyBox}>
+          <ScrollView horizontal={true} 
+                      showsHorizontalScrollIndicator={false}>
+            
+            <View style={styles.paymentCard}> 
 
-          <View style={styles.row}>
-            <Image 
-              style={styles.icon}
-              source={require('../assets/images/clock.png')}
-            />
-            <View style={styles.textInfo}>
-              <Text style={styles.text}>{params.timeSpent}</Text>
             </View>
-          </View>
+            <View style={styles.paymentCard}> 
+
+            </View>
+
+          </ScrollView>
         </View>
 
-        <View style={styles.blank} />
+       <View style={styles.lowerContainer}> 
 
-        <View style={styles.buttonBlock}>
-          <TouchableOpacity style={styles.button} onPress={() => navigation.popToTop()}>
-            <Text style={styles.buttonText}>Završi</Text>
-          </TouchableOpacity> 
+          <View style={styles.containerInfo}>
+            <View style={styles.row}>
+              <Image 
+                style={styles.icon}
+                source={require('../assets/images/calendar.png')}
+              />
+              <View style={styles.textInfo}>
+                <Text style={styles.text}>{date}</Text>
+              </View>
+            </View>
+
+            <View style={styles.row}>
+              <Image 
+                style={styles.iconLogo}
+                source={require('../assets/images/playlogo.png')}
+              />
+              <View style={styles.textInfo}>
+                <Text style={styles.text}>{params.consoleNum}</Text>
+              </View>
+            </View>
+
+            <View style={styles.row}>
+              <Image 
+                style={styles.icon}
+                source={require('../assets/images/clock.png')}
+              />
+              <View style={styles.textInfo}>
+                <Text style={styles.text}>{params.timeSpent}</Text>
+              </View>
+            </View>
+          </View>
+
+          <View style={styles.blank} />
+
+          <View style={styles.buttonBlock}>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.popToTop()}>
+              <Text style={styles.buttonText}>Završi</Text>
+            </TouchableOpacity> 
+          </View>
         </View>
       </View>
   );
@@ -73,11 +83,12 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
   },
-  moneyBar: {
-    backgroundColor: "#ff4500",
-    height: scaleFont(170), 
+  moneyBox: {
+    backgroundColor: 'transparent',
+    height: scaleFont(300), 
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: scaleFont(7)
   },
   time: {
     flex: 1,
@@ -86,23 +97,16 @@ const styles = StyleSheet.create({
   },
   timeText: {
     textAlign: 'center',
-    fontSize: 50,
+    fontSize: 20,
     color: 'rgba(0, 0, 0, 0.7)',
-    fontWeight: 'bold',
-    adjustsFontSizeToFit: true,
-    allowFontScaling: true,
-  },
-  animation: {
-    width: scaleFont(500),
-    height: scaleFont(500),
-    position: 'absolute',
+    fontWeight: 'bold'
   },
   containerInfo: {
-    flex: 2,
+    flex: 1,
     flexDirection: 'column',
     width: scaleFont(300),
-    gap: 10,
-    paddingTop: 30
+    height: "100%",
+    gap: 10
   },
   row: {
     flex: 1,
@@ -124,14 +128,15 @@ const styles = StyleSheet.create({
   textInfo: {
     flex: 2,
     justifyContent: 'center',
+    height: 100
   },
   text: {
     fontWeight: 'bold',
-    fontSize: 17,
+    fontSize: 20,
     color: 'rgba(0, 0, 0, 0.7)',
   },
   blank: {
-    flex: 3,
+    flex: 2,
   },
   buttonBlock: {
     position: 'absolute', 
@@ -145,16 +150,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: "3%",
-    paddingHorizontal: "35%",
+    paddingHorizontal: "40%",
     borderRadius: 9,
     elevation: 2,
-    backgroundColor: '#ff4500',
+    backgroundColor: '#009999',
   },
   buttonText: {
     fontWeight: 'bold',
     fontSize: 13,
     color: 'white',
-  }
+  },
+  lowerContainer: {
+    flex: 1,
+    marginTop: scaleFont(50)
+  },
+  paymentCard: {
+    width: scaleFont(320),
+    borderRadius: scaleFont(30),
+    marginVertical: scaleFont(35),
+    marginHorizontal: scaleFont(5),
+    backgroundColor: '#000066'
+  } 
 });
 
 export default RecieptRegular;
