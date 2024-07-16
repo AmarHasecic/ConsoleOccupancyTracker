@@ -1,7 +1,16 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity, Dimensions, PixelRatio, ScrollView, ImageBackground} from 'react-native';
 import { useLocalSearchParams, useNavigation } from 'expo-router';
-import LottieView from 'lottie-react-native';
+import AppLoading from 'expo-app-loading';
+import {
+  useFonts,
+  Oswald_200ExtraLight,
+  Oswald_300Light,
+  Oswald_400Regular,
+  Oswald_500Medium,
+  Oswald_600SemiBold,
+  Oswald_700Bold,
+} from '@expo-google-fonts/oswald';
 
 const scaleNumber = (size) => {
   const screenWidth = Dimensions.get('window').width;
@@ -10,11 +19,26 @@ const scaleNumber = (size) => {
   return Math.round(PixelRatio.roundToNearestPixel(newSize));
 };
 
-const RecieptRegular = () => {
+const Reciept = () => {
+
 
   const params = useLocalSearchParams();
   const date = Date();
   const navigation = useNavigation();
+
+  let [fontsLoaded] = useFonts({
+    Oswald_200ExtraLight,
+    Oswald_300Light,
+    Oswald_400Regular,
+    Oswald_500Medium,
+    Oswald_600SemiBold,
+    Oswald_700Bold,
+  });
+
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
 
   return (
     <ImageBackground
@@ -29,15 +53,29 @@ const RecieptRegular = () => {
               
               <View style={styles.paymentCard}> 
 
-                <Text style={styles.paymentCardHeading}>
+                <Text style={[styles.paymentCardHeading, {
+                  fontFamily: 'Oswald_300Light',
+                }]}>
                   REGULARNI SATI
                 </Text>
+                <View style={styles.paymentCardContent}>
+                    <Text style={styles.paymentCardContentText}>
+                        {params.moneySpentRegular} KM
+                    </Text>
+                </View>
               </View>
               
               <View style={styles.paymentCard}> 
-              <Text style={styles.paymentCardHeading}>
-                  HAPPY HOUR
-                </Text>
+                  <Text style={[styles.paymentCardHeading, {
+                      fontFamily: 'Oswald_300Light',
+                    }]}>
+                      HAPPY HOUR
+                  </Text>
+                  <View style={styles.paymentCardContent}>
+                    <Text style={styles.paymentCardContentText}>
+                        {params.moneySpentHappy} KM
+                    </Text>
+                </View>
               </View>
 
             </ScrollView>
@@ -88,6 +126,7 @@ const RecieptRegular = () => {
         </View>
       </ImageBackground>
   );
+  }  
 }
 
 const styles = StyleSheet.create({
@@ -184,9 +223,9 @@ const styles = StyleSheet.create({
   },
   paymentCardHeading: {
     color: 'white',
-    fontSize: scaleNumber(15),
-    fontWeight: 'bold',
-    padding: scaleNumber(20)
+    fontSize: scaleNumber(22),
+    padding: scaleNumber(20),
+    paddingLeft: scaleNumber(30)
   },
   animation: {
     flex: 1,
@@ -199,7 +238,17 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     justifyContent: 'center',
 
+  },
+  paymentCardContent:  {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  paymentCardContentText:  {
+   fontSize: scaleNumber(30),
+   fontWeight: 'bold',
+   color: 'white',
   }
 });
 
-export default RecieptRegular;
+export default Reciept;
