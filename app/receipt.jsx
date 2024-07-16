@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image, TouchableOpacity, Dimensions, PixelRatio, ScrollView} from 'react-native';
+import { View, StyleSheet, Text, Image, TouchableOpacity, Dimensions, PixelRatio, ScrollView, ImageBackground} from 'react-native';
 import { useLocalSearchParams, useNavigation } from 'expo-router';
+import LottieView from 'lottie-react-native';
 
-const scaleFont = (size) => {
+const scaleNumber = (size) => {
   const screenWidth = Dimensions.get('window').width;
   const scaleFactor = screenWidth / 360; 
   const newSize = size * scaleFactor;
@@ -16,65 +17,76 @@ const RecieptRegular = () => {
   const navigation = useNavigation();
 
   return (
-      <View style={styles.column}>
+    <ImageBackground
+    source={require('../assets/images/background.jpg')}
+    style={styles.background}
+    >
+        <View style={styles.column}>
 
-        <View style={styles.moneyBox}>
-          <ScrollView horizontal={true} 
-                      showsHorizontalScrollIndicator={false}>
-            
-            <View style={styles.paymentCard}> 
+          <View style={styles.moneyBox}>
+            <ScrollView horizontal={true} 
+                        showsHorizontalScrollIndicator={false}>
+              
+              <View style={styles.paymentCard}> 
 
-            </View>
-            <View style={styles.paymentCard}> 
-
-            </View>
-
-          </ScrollView>
-        </View>
-
-       <View style={styles.lowerContainer}> 
-
-          <View style={styles.containerInfo}>
-            <View style={styles.row}>
-              <Image 
-                style={styles.icon}
-                source={require('../assets/images/calendar.png')}
-              />
-              <View style={styles.textInfo}>
-                <Text style={styles.text}>{date}</Text>
+                <Text style={styles.paymentCardHeading}>
+                  REGULARNI SATI
+                </Text>
               </View>
-            </View>
-
-            <View style={styles.row}>
-              <Image 
-                style={styles.iconLogo}
-                source={require('../assets/images/playlogo.png')}
-              />
-              <View style={styles.textInfo}>
-                <Text style={styles.text}>{params.consoleNum}</Text>
+              
+              <View style={styles.paymentCard}> 
+              <Text style={styles.paymentCardHeading}>
+                  HAPPY HOUR
+                </Text>
               </View>
-            </View>
 
-            <View style={styles.row}>
-              <Image 
-                style={styles.icon}
-                source={require('../assets/images/clock.png')}
-              />
-              <View style={styles.textInfo}>
-                <Text style={styles.text}>{params.timeSpent}</Text>
-              </View>
-            </View>
+            </ScrollView>
           </View>
 
-          <View style={styles.blank} />
+        <View style={styles.lowerContainer}> 
 
-          <View style={styles.buttonBlock}>
-            <TouchableOpacity style={styles.button} onPress={() => navigation.popToTop()}>
-              <Text style={styles.buttonText}>Završi</Text>
-            </TouchableOpacity> 
+            <View style={styles.containerInfo}>
+              <View style={styles.row}>
+                <Image 
+                  style={styles.icon}
+                  source={require('../assets/images/calendar.png')}
+                />
+                <View style={styles.textInfo}>
+                  <Text style={styles.text}>{date}</Text>
+                </View>
+              </View>
+
+              <View style={styles.row}>
+                <Image 
+                  style={styles.iconLogo}
+                  source={require('../assets/images/playlogo.png')}
+                />
+                <View style={styles.textInfo}>
+                  <Text style={styles.text}>{params.consoleNum}</Text>
+                </View>
+              </View>
+
+              <View style={styles.row}>
+                <Image 
+                  style={styles.icon}
+                  source={require('../assets/images/clock.png')}
+                />
+                <View style={styles.textInfo}>
+                  <Text style={styles.text}>{params.timeSpent}</Text>
+                </View>
+              </View>
+            </View>
+
+            <View style={styles.blank} />
+
+            <View style={styles.buttonBlock}>
+              <TouchableOpacity style={styles.button} onPress={() => navigation.popToTop()}>
+                <Text style={styles.buttonText}>Završi</Text>
+              </TouchableOpacity> 
+            </View>
           </View>
         </View>
-      </View>
+      </ImageBackground>
   );
 }
 
@@ -85,10 +97,10 @@ const styles = StyleSheet.create({
   },
   moneyBox: {
     backgroundColor: 'transparent',
-    height: scaleFont(300), 
+    height: scaleNumber(300), 
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: scaleFont(7)
+    paddingHorizontal: scaleNumber(7)
   },
   time: {
     flex: 1,
@@ -104,7 +116,7 @@ const styles = StyleSheet.create({
   containerInfo: {
     flex: 1,
     flexDirection: 'column',
-    width: scaleFont(300),
+    width: scaleNumber(300),
     height: "100%",
     gap: 10
   },
@@ -162,15 +174,32 @@ const styles = StyleSheet.create({
   },
   lowerContainer: {
     flex: 1,
-    marginTop: scaleFont(50)
   },
   paymentCard: {
-    width: scaleFont(320),
-    borderRadius: scaleFont(30),
-    marginVertical: scaleFont(35),
-    marginHorizontal: scaleFont(5),
-    backgroundColor: '#000066'
-  } 
+    width: scaleNumber(320),
+    borderRadius: scaleNumber(30),
+    marginVertical: scaleNumber(35),
+    marginHorizontal: scaleNumber(5),
+    backgroundColor: '#006666'
+  },
+  paymentCardHeading: {
+    color: 'white',
+    fontSize: scaleNumber(15),
+    fontWeight: 'bold',
+    padding: scaleNumber(20)
+  },
+  animation: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
+    resizeMode: "contain"
+  },
+  background: {
+    flex: 1,
+    resizeMode: 'contain',
+    justifyContent: 'center',
+
+  }
 });
 
 export default RecieptRegular;
