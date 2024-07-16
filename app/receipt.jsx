@@ -6,6 +6,19 @@ import {
   useFonts,
   Oswald_300Light,
 } from '@expo-google-fonts/oswald';
+import {
+  Lato_100Thin,
+  Lato_100Thin_Italic,
+  Lato_300Light,
+  Lato_300Light_Italic,
+  Lato_400Regular,
+  Lato_400Regular_Italic,
+  Lato_700Bold,
+  Lato_700Bold_Italic,
+  Lato_900Black,
+  Lato_900Black_Italic,
+} from '@expo-google-fonts/lato';
+
 
 const scaleNumber = (size) => {
   const screenWidth = Dimensions.get('window').width;
@@ -23,6 +36,16 @@ const Reciept = () => {
 
   let [fontsLoaded] = useFonts({
     Oswald_300Light,
+    Lato_100Thin,
+    Lato_100Thin_Italic,
+    Lato_300Light,
+    Lato_300Light_Italic,
+    Lato_400Regular,
+    Lato_400Regular_Italic,
+    Lato_700Bold,
+    Lato_700Bold_Italic,
+    Lato_900Black,
+    Lato_900Black_Italic,
 
   });
 
@@ -42,32 +65,49 @@ const Reciept = () => {
             <ScrollView horizontal={true} 
                         showsHorizontalScrollIndicator={false}>
               
-              <View style={styles.paymentCard}> 
+        
+
+              <ImageBackground style={styles.paymentCard}
+                               imageStyle={styles.imageStyle}
+                               source={require('../assets/images/orangeCard.jpg')}> 
 
                 <Text style={[styles.paymentCardHeading, {
                   fontFamily: 'Oswald_300Light',
                 }]}>
                   REGULARNI SATI
                 </Text>
+
                 <View style={styles.paymentCardContent}>
-                    <Text style={styles.paymentCardContentText}>
+                    <Image 
+                      style={styles.paymentCardIcon}
+                      source={require('../assets/images/sad.png')}
+                    />
+                    <Text style={[styles.paymentCardContentText, {fontFamily: 'Lato_400Regular_Italic'}]}>
                         {params.moneySpentRegular} KM
                     </Text>
                 </View>
-              </View>
+              </ImageBackground>
               
-              <View style={styles.paymentCard}> 
-                  <Text style={[styles.paymentCardHeading, {
-                      fontFamily: 'Oswald_300Light',
-                    }]}>
-                      HAPPY HOUR
-                  </Text>
-                  <View style={styles.paymentCardContent}>
-                    <Text style={styles.paymentCardContentText}>
+              <ImageBackground style={styles.paymentCard}
+                               imageStyle={styles.imageStyle}
+                               source={require('../assets/images/greenCard.jpg')}> 
+
+                <Text style={[styles.paymentCardHeading, {
+                  fontFamily: 'Oswald_300Light',
+                }]}>
+                  HAPPY HOUR
+                </Text>
+
+                <View style={styles.paymentCardContent}>
+                    <Image 
+                      style={styles.paymentCardIcon}
+                      source={require('../assets/images/smiley.png')}
+                    />
+                    <Text style={[styles.paymentCardContentText, {fontFamily: 'Lato_400Regular_Italic'}]}>
                         {params.moneySpentHappy} KM
                     </Text>
                 </View>
-              </View>
+              </ImageBackground>
 
             </ScrollView>
           </View>
@@ -204,6 +244,7 @@ const styles = StyleSheet.create({
   },
   lowerContainer: {
     flex: 1,
+    marginTop: scaleNumber(30)
   },
   paymentCard: {
     width: scaleNumber(320),
@@ -215,14 +256,8 @@ const styles = StyleSheet.create({
   paymentCardHeading: {
     color: 'white',
     fontSize: scaleNumber(22),
-    padding: scaleNumber(20),
+    paddingTop: scaleNumber(10),
     paddingLeft: scaleNumber(30)
-  },
-  animation: {
-    flex: 1,
-    width: "100%",
-    height: "100%",
-    resizeMode: "contain"
   },
   background: {
     flex: 1,
@@ -236,9 +271,19 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   paymentCardContentText:  {
-   fontSize: scaleNumber(30),
+   fontSize: scaleNumber(50),
    fontWeight: 'bold',
    color: 'white',
+   flexDirection: 'row',
+  },
+  imageStyle: {
+    borderRadius: scaleNumber(30),  
+    overflow: 'hidden', 
+  },
+  paymentCardIcon: {
+    width: '50%', 
+    height: '50%',
+    resizeMode: "contain",
   }
 });
 
