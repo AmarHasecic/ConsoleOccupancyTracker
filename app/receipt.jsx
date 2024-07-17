@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image, TouchableOpacity, Dimensions, PixelRatio, ScrollView, ImageBackground} from 'react-native';
+import { View, StyleSheet, Text, Image, TouchableOpacity, Dimensions, PixelRatio, ScrollView, ImageBackground } from 'react-native';
 import { useLocalSearchParams, useNavigation } from 'expo-router';
 import AppLoading from 'expo-app-loading';
 import {
@@ -10,7 +10,7 @@ import {
 
 const scaleNumber = (size) => {
   const screenWidth = Dimensions.get('window').width;
-  const scaleFactor = screenWidth / 360; 
+  const scaleFactor = screenWidth / 360;
   const newSize = size * scaleFactor;
   return Math.round(PixelRatio.roundToNearestPixel(newSize));
 };
@@ -24,7 +24,7 @@ const Reciept = () => {
 
   let [fontsLoaded] = useFonts({
     Oswald_300Light,
-  
+
   });
 
 
@@ -32,67 +32,69 @@ const Reciept = () => {
     return <AppLoading />;
   } else {
 
-  return (
+    return (
 
-   <View style={styles.column}>
+      <View style={styles.column}>
 
-       <View style={styles.header}>
+        <View style={styles.header}>
+      
+        </View>
 
-       </View>
 
-       <ScrollView horizontal={true} 
-                   showsHorizontalScrollIndicator={false}>
+
+        <ScrollView horizontal={true}
+          showsHorizontalScrollIndicator={false}>
+
+
+
+        </ScrollView>
+
+
+
+        <View style={styles.containerInfo}>
           
-
-
-       </ScrollView> 
-
-
-        <View style={styles.lowerContainer}> 
-
-            <View style={styles.containerInfo}>
-              <View style={styles.row}>
-                <Image 
-                  style={styles.icon}
-                  source={require('../assets/images/calendar.png')}
-                />
-                <View style={styles.textInfo}>
-                  <Text style={styles.text}>{date}</Text>
-                </View>
-              </View>
-
-              <View style={styles.row}>
-                <Image 
-                  style={styles.iconLogo}
-                  source={require('../assets/images/playlogo.png')}
-                />
-                <View style={styles.textInfo}>
-                  <Text style={styles.text}>{params.consoleNum}</Text>
-                </View>
-              </View>
-
-              <View style={styles.row}>
-                <Image 
-                  style={styles.icon}
-                  source={require('../assets/images/clock.png')}
-                />
-                <View style={styles.textInfo}>
-                  <Text style={styles.text}>{params.timeSpent}</Text>
-                </View>
-              </View>
+          <View style={styles.row}>
+            <Image
+              style={styles.icon}
+              source={require('../assets/images/calendar.png')}
+            />
+            <View style={styles.textInfo}>
+              <Text style={styles.text}>{date}</Text>
             </View>
+          </View>
 
-            <View style={styles.blank} />
+          <View style={styles.row}>
+            <Image
+              style={styles.iconLogo}
+              source={require('../assets/images/playlogo.png')}
+            />
+            <View style={styles.textInfo}>
+              <Text style={styles.text}>{params.consoleNum}</Text>
+            </View>
+          </View>
 
-            <View style={styles.buttonBlock}>
-              <TouchableOpacity style={styles.button} onPress={() => navigation.popToTop()}>
-                <Text style={styles.buttonText}>Završi</Text>
-              </TouchableOpacity> 
+          <View style={styles.row}>
+            <Image
+              style={styles.icon}
+              source={require('../assets/images/clock.png')}
+            />
+            <View style={styles.textInfo}>
+              <Text style={styles.text}>{params.timeSpent}</Text>
             </View>
           </View>
         </View>
-  );
-  }  
+
+        <View style={styles.blank} />
+
+        <View style={styles.buttonBlock}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.popToTop()}>
+            <Text style={styles.buttonText}>Završi</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -100,23 +102,13 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
   },
-  time: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  timeText: {
-    textAlign: 'center',
-    fontSize: 20,
-    color: 'rgba(0, 0, 0, 0.7)',
-    fontWeight: 'bold'
-  },
   containerInfo: {
     flex: 1,
     flexDirection: 'column',
     width: scaleNumber(300),
     height: "100%",
-    gap: 10
+    gap: 10,
+    marginTop: scaleNumber(30)
   },
   row: {
     flex: 1,
@@ -125,13 +117,13 @@ const styles = StyleSheet.create({
   },
   icon: {
     flex: 1,
-    width: '100%', 
+    width: '100%',
     height: '100%',
     resizeMode: "contain",
   },
   iconLogo: {
     flex: 1,
-    width: '87%', 
+    width: '87%',
     height: '87%',
     resizeMode: "contain",
   },
@@ -149,8 +141,8 @@ const styles = StyleSheet.create({
     flex: 2,
   },
   buttonBlock: {
-    position: 'absolute', 
-    bottom: 20, 
+    position: 'absolute',
+    bottom: 20,
     left: 0,
     right: 0,
     justifyContent: 'center',
@@ -169,10 +161,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 13,
     color: 'white',
-  },
-  lowerContainer: {
-    flex: 1,
-    marginTop: scaleNumber(30)
   }
 });
 
