@@ -37,7 +37,7 @@ const Reciept = () => {
       <View style={styles.column}>
 
         <View style={styles.header}>
-      
+
         </View>
 
 
@@ -58,8 +58,8 @@ const Reciept = () => {
               style={styles.icon}
               source={require('../assets/images/calendar.png')}
             />
-            <View style={styles.textInfo}>
-              <Text style={styles.text}>{date}</Text>
+            <View style={styles.textContainer}>
+              <Text style={styles.textInfo}>{date}</Text>
             </View>
           </View>
 
@@ -68,8 +68,8 @@ const Reciept = () => {
               style={styles.iconLogo}
               source={require('../assets/images/playlogo.png')}
             />
-            <View style={styles.textInfo}>
-              <Text style={styles.text}>{params.consoleNum}</Text>
+            <View style={styles.textContainer}>
+              <Text style={styles.textInfo}>{params.consoleNum}</Text>
             </View>
           </View>
 
@@ -78,15 +78,15 @@ const Reciept = () => {
               style={styles.icon}
               source={require('../assets/images/clock.png')}
             />
-            <View style={styles.textInfo}>
-              <Text style={styles.text}>{params.timeSpent}</Text>
+            <View style={styles.textContainer}>
+              <Text style={styles.textInfo}>{params.timeSpent}</Text>
             </View>
           </View>
         </View>
 
         <View style={styles.blank} />
 
-        <View style={styles.buttonBlock}>
+        <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.button} onPress={() => navigation.popToTop()}>
             <Text style={styles.buttonText}>Završi</Text>
           </TouchableOpacity>
@@ -101,14 +101,19 @@ const styles = StyleSheet.create({
   column: {
     flex: 1,
     flexDirection: 'column',
+    padding: 10
+  },
+  header: {
+    width: "100%",
+    height: "15%",
+    backgroundColor: '#1affa3'
   },
   containerInfo: {
     flex: 1,
     flexDirection: 'column',
-    width: scaleNumber(300),
-    height: "100%",
-    gap: 10,
-    marginTop: scaleNumber(30)
+    width: "100%",
+    height: "50%",
+    gap: 5
   },
   row: {
     flex: 1,
@@ -127,12 +132,12 @@ const styles = StyleSheet.create({
     height: '87%',
     resizeMode: "contain",
   },
-  textInfo: {
-    flex: 2,
+  textContainer: {
+    flex: 3,
     justifyContent: 'center',
     height: 100
   },
-  text: {
+  textInfo: {
     fontWeight: 'bold',
     fontSize: 20,
     color: 'rgba(0, 0, 0, 0.7)',
@@ -140,7 +145,7 @@ const styles = StyleSheet.create({
   blank: {
     flex: 2,
   },
-  buttonBlock: {
+  buttonContainer: {
     position: 'absolute',
     bottom: 20,
     left: 0,
