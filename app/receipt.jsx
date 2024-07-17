@@ -27,8 +27,17 @@ const Reciept = () => {
 
   });
 
+  const imageMapping = {
+    regular: require('../assets/images/twoplayers.png'),
+    regularPlus2: require('../assets/images/fourplayers.png'),
+    happyHour: require('../assets/images/twohappypeople.png'),
+    happyHourPlus2: require('../assets/images/happyfourplayers.png')
+  };
+
   const [money, setMoney] = useState(params.moneySpentRegular);
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState("Regular");
+  const [icon, setIcon] = useState('regular');
+
 
 
   if (!fontsLoaded) {
@@ -40,6 +49,14 @@ const Reciept = () => {
       <View style={styles.column}>
 
         <View style={styles.header}>
+          <Text style={styles.title}>{title}</Text>
+          <View style={styles.moneyCardIconContainer}>
+            <Image
+             style={[styles.moneyCardIcon, { opacity: 0.7 }]}
+              source={imageMapping[icon]}
+            />
+          </View>
+
           <Text style={styles.moneyText}> {money} KM</Text>
         </View>
 
@@ -57,7 +74,11 @@ const Reciept = () => {
           <ScrollView horizontal={true}
             showsHorizontalScrollIndicator={false}>
 
-            <TouchableOpacity style={styles.option} onPress={ () => setMoney(params.moneySpentRegular) } >
+            <TouchableOpacity style={styles.option} onPress={() => {
+              setMoney(params.moneySpentRegular)
+              setTitle("Regular")
+              setIcon('regular')
+            }} >
               <View style={styles.optionHeader}>
                 <View style={styles.optionHeaderRow}>
                   <View style={styles.optionHeaderIconSpot}>
@@ -78,7 +99,11 @@ const Reciept = () => {
             </TouchableOpacity>
 
 
-            <TouchableOpacity style={styles.option} onPress={ () => setMoney(params.moneySpentRegular2na2) }>
+            <TouchableOpacity style={styles.option} onPress={() => {
+              setMoney(params.moneySpentRegular2na2)
+              setTitle("Regular +2")
+              setIcon('regularPlus2')
+            }} >
               <View style={styles.optionHeader}>
                 <View style={styles.optionHeaderRow}>
                   <View style={styles.optionHeaderIconSpot}>
@@ -98,7 +123,11 @@ const Reciept = () => {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.option} onPress={ () => setMoney(params.moneySpentHappy) }>
+            <TouchableOpacity style={styles.option} onPress={() => {
+              setMoney(params.moneySpentHappy)
+              setTitle("Happy Hour")
+              setIcon('happyHour')
+            }} >
               <View style={styles.optionHeader}>
                 <View style={styles.optionHeaderRow}>
                   <View style={styles.optionHeaderIconSpot}>
@@ -118,7 +147,11 @@ const Reciept = () => {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.option} onPress={ () => setMoney(params.moneySpentHappy2na2) }>
+            <TouchableOpacity style={styles.option} onPress={() => {
+              setMoney(params.moneySpentHappy2na2)
+              setTitle("Happy Hour +2")
+              setIcon('happyHourPlus2')
+            }} >
               <View style={styles.optionHeader}>
                 <View style={styles.optionHeaderRow}>
                   <View style={styles.optionHeaderIconSpot}>
@@ -210,6 +243,26 @@ const styles = StyleSheet.create({
     backgroundColor: '#00b386',
     borderTopRightRadius: scaleNumber(20),
     borderBottomStartRadius: scaleNumber(20),
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: scaleNumber(20),
+    color: 'rgba(0, 0, 0, 0.6)',
+    padding: scaleNumber(15)
+  },
+  moneyCardIconContainer: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    width: "20%",
+    height: "40%",
+    padding: scaleNumber(15)
+  },
+  moneyCardIcon: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    resizeMode: "contain",
   },
   moneyText: {
     position: 'absolute',
