@@ -46,7 +46,7 @@ const Reciept = () => {
             padding: scaleNumber(10),
             fontSize: scaleNumber(21),
             paddingTop: scaleNumber(30),
-            paddingBottom: scaleNumber(12)
+            paddingBottom: scaleNumber(15)
           }]}>
             Način izračuna cijene
           </Text>
@@ -54,60 +54,130 @@ const Reciept = () => {
           <ScrollView horizontal={true}
             showsHorizontalScrollIndicator={false}>
 
-            <View style={styles.option}>
+            <TouchableOpacity style={styles.option}>
+              <View style={styles.optionHeader}>
+                <View style={styles.optionHeaderRow}>
+                  <View style={styles.optionHeaderIconSpot}>
+                    <Image
+                      style={{ height: "60%", width: "60%", resizeMode: "contain" }}
+                      source={require('../assets/images/twoplayers.png')}
+                    />
+                  </View>
+                  <View style={{ flex: 1, flexDirection: 'column' }}>
+                    <Text style={[styles.textInfo, { fontSize: scaleNumber(15) }]}> 5.00 KM</Text>
+                    <Text style={[styles.textInfo, { fontSize: scaleNumber(11), color: 'rgba(0, 0, 0, 0.4)', }]}> 60 min</Text>
+                  </View>
+                </View>
+              </View>
+              <View style={styles.optionFutter}>
+                <Text style={[styles.textInfo, { fontSize: scaleNumber(17) }]}>Regular</Text>
+              </View>
+            </TouchableOpacity>
 
-            </View>
-            <View style={styles.option}>
 
-            </View>
-            <View style={styles.option}>
+            <TouchableOpacity style={styles.option}>
+              <View style={styles.optionHeader}>
+                <View style={styles.optionHeaderRow}>
+                  <View style={styles.optionHeaderIconSpot}>
+                    <Image
+                      style={{ height: "60%", width: "60%", resizeMode: "contain" }}
+                      source={require('../assets/images/fourplayers.png')}
+                    />
+                  </View>
+                  <View style={{ flex: 1, flexDirection: 'column' }}>
+                    <Text style={[styles.textInfo, { fontSize: scaleNumber(15) }]}> 7.00 KM</Text>
+                    <Text style={[styles.textInfo, { fontSize: scaleNumber(11), color: 'rgba(0, 0, 0, 0.4)', }]}> 60 min</Text>
+                  </View>
+                </View>
+              </View>
+              <View style={styles.optionFutter}>
+                <Text style={[styles.textInfo, { fontSize: scaleNumber(17) }]}>Regular +2</Text>
+              </View>
+            </TouchableOpacity>
 
-            </View>
-            <View style={styles.option}>
+            <TouchableOpacity style={styles.option}>
+              <View style={styles.optionHeader}>
+                <View style={styles.optionHeaderRow}>
+                  <View style={styles.optionHeaderIconSpot}>
+                    <Image
+                      style={{ height: "60%", width: "60%", resizeMode: "contain" }}
+                      source={require('../assets/images/twohappypeople.png')}
+                    />
+                  </View>
+                  <View style={{ flex: 1, flexDirection: 'column' }}>
+                    <Text style={[styles.textInfo, { fontSize: scaleNumber(15) }]}> 3.00 KM</Text>
+                    <Text style={[styles.textInfo, { fontSize: scaleNumber(11), color: 'rgba(0, 0, 0, 0.4)', }]}> 60 min</Text>
+                  </View>
+                </View>
+              </View>
+              <View style={styles.optionFutter}>
+                <Text style={[styles.textInfo, { fontSize: scaleNumber(17) }]}>Happy Hour</Text>
+              </View>
+            </TouchableOpacity>
 
-            </View>
+            <TouchableOpacity style={styles.option}>
+              <View style={styles.optionHeader}>
+                <View style={styles.optionHeaderRow}>
+                  <View style={styles.optionHeaderIconSpot}>
+                    <Image
+                      style={{ height: "60%", width: "60%", resizeMode: "contain" }}
+                      source={require('../assets/images/happyfourplayers.png')}
+                    />
+                  </View>
+                  <View style={{ flex: 1, flexDirection: 'column' }}>
+                    <Text style={[styles.textInfo, { fontSize: scaleNumber(15) }]}> 5.00 KM</Text>
+                    <Text style={[styles.textInfo, { fontSize: scaleNumber(11), color: 'rgba(0, 0, 0, 0.4)', }]}> 60 min</Text>
+                  </View>
+                </View>
+              </View>
+              <View style={styles.optionFutter}>
+                <Text style={[styles.textInfo, { fontSize: scaleNumber(17) }]}>Happy Hour +2</Text>
+              </View>
+            </TouchableOpacity>
 
           </ScrollView>
 
         </View>
 
+        <Text style={[styles.textInfo, {
+          padding: scaleNumber(10),
+          fontSize: scaleNumber(21),
+          paddingBottom: scaleNumber(20)
+        }]}>
+          Informacije
+        </Text>
+
         <View style={styles.containerInfo}>
+          <View style={styles.containerInfoColumn}>
 
-          <Text style={[styles.textInfo, {
-            padding: scaleNumber(10),
-            fontSize: scaleNumber(21),
-            marginBottom: scaleNumber(12)
-          }]}>
-            Informacije
-          </Text>
-
-          <View style={styles.row}>
-            <Image
-              style={styles.icon}
-              source={require('../assets/images/calendar.png')}
-            />
-            <View style={styles.textContainer}>
-              <Text style={styles.textInfo}>{date}</Text>
+            <View style={styles.row}>
+              <Image
+                style={styles.icon}
+                source={require('../assets/images/calendar.png')}
+              />
+              <View style={styles.textContainer}>
+                <Text style={styles.textInfo}>{date}</Text>
+              </View>
             </View>
-          </View>
 
-          <View style={styles.row}>
-            <Image
-              style={styles.iconLogo}
-              source={require('../assets/images/playlogo.png')}
-            />
-            <View style={styles.textContainer}>
-              <Text style={styles.textInfo}>{params.consoleNum}</Text>
+            <View style={styles.row}>
+              <Image
+                style={styles.iconLogo}
+                source={require('../assets/images/playlogo.png')}
+              />
+              <View style={styles.textContainer}>
+                <Text style={styles.textInfo}>{params.consoleNum}</Text>
+              </View>
             </View>
-          </View>
 
-          <View style={styles.row}>
-            <Image
-              style={styles.icon}
-              source={require('../assets/images/clock.png')}
-            />
-            <View style={styles.textContainer}>
-              <Text style={styles.textInfo}>{params.timeSpent}</Text>
+            <View style={styles.row}>
+              <Image
+                style={styles.icon}
+                source={require('../assets/images/clock.png')}
+              />
+              <View style={styles.textContainer}>
+                <Text style={styles.textInfo}>{params.timeSpent}</Text>
+              </View>
             </View>
           </View>
         </View>
@@ -139,20 +209,55 @@ const styles = StyleSheet.create({
     borderBottomStartRadius: scaleNumber(20),
   },
   optionsContainer: {
-    flex: 1.4,
+    flex: 1.5,
   },
   option: {
-    height: "75%",
+    height: "70%",
     width: scaleNumber(150),
     borderColor: 'rgba(0, 0, 0, 0.4)',
     borderWidth: 2,
     borderRadius: scaleNumber(20),
-    margin: 7
+    margin: scaleNumber(5)
   },
-  containerInfo: {
+  optionFutter: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    paddingLeft: scaleNumber(15),
+    paddingBottom: scaleNumber(10)
+  },
+  optionHeaderRow: {
+    flex: 1,
+    flexDirection: 'row',
+    gap: 10
+  },
+  optionHeader: {
+    width: "100%",
+    height: "60%",
+    paddingTop: scaleNumber(10),
+    paddingLeft: scaleNumber(12)
+  },
+  optionHeaderIconSpot: {
+    width: "40%",
+    height: "95%",
+    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+    borderRadius: scaleNumber(12),
+    justifyContent: 'center',
+    alignItems: 'center'
+
+  },
+  containerInfoColumn: {
     flex: 1,
     flexDirection: 'column',
     gap: 7,
+    paddingTop: "5%"
+  },
+  containerInfo: {
+    flex: 0.8,
+    backgroundColor: 'rgba(0, 0, 0, 0.06)',
+    paddingHorizontal: scaleNumber(10),
+    paddingBottom: scaleNumber(15),
+    borderRadius: scaleNumber(20),
   },
   row: {
     flex: 1,
@@ -172,7 +277,7 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
   textContainer: {
-    flex: 4,
+    flex: 5,
     justifyContent: 'center',
     height: 100,
     paddingRight: scaleNumber(50)
@@ -180,7 +285,7 @@ const styles = StyleSheet.create({
   textInfo: {
     fontWeight: 'bold',
     fontSize: 17,
-    color: 'rgba(0, 0, 0, 0.7)',
+    color: 'rgba(0, 0, 0, 0.75)',
   },
   blank: {
     flex: 1,
@@ -196,7 +301,7 @@ const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: "3%",
+    paddingVertical: "3.5%",
     paddingHorizontal: "40%",
     borderRadius: 9,
     elevation: 2,
