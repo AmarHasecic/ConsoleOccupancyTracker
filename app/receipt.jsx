@@ -255,7 +255,7 @@ const styles = StyleSheet.create({
     top: 0,
     right: 0,
     width: "20%",
-    height: "40%",
+    height: "42%",
     padding: scaleNumber(15)
   },
   moneyCardIcon: {
