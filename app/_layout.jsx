@@ -19,9 +19,7 @@ export default function Layout() {
       <Stack.Screen name="receipt"
       options={{ title: 'Račun' }}>
       </Stack.Screen>
-
   
-
   </Stack>
   );
 };
