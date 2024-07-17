@@ -51,24 +51,24 @@ const Reciept = () => {
             Način izračuna cijene
           </Text>
 
-            <ScrollView horizontal={true}
-              showsHorizontalScrollIndicator={false}>
+          <ScrollView horizontal={true}
+            showsHorizontalScrollIndicator={false}>
 
-              <View style={styles.option}>
+            <View style={styles.option}>
 
-              </View>
-              <View style={styles.option}>
+            </View>
+            <View style={styles.option}>
 
-              </View>
-              <View style={styles.option}>
+            </View>
+            <View style={styles.option}>
 
-              </View>
-              <View style={styles.option}>
+            </View>
+            <View style={styles.option}>
 
-              </View>
+            </View>
 
-            </ScrollView>
-        
+          </ScrollView>
+
         </View>
 
         <View style={styles.containerInfo}>
@@ -134,17 +134,17 @@ const styles = StyleSheet.create({
   header: {
     width: "100%",
     height: "20%",
-    backgroundColor: '#1affa3',
+    backgroundColor: '#00b386',
     borderTopRightRadius: scaleNumber(20),
     borderBottomStartRadius: scaleNumber(20),
   },
   optionsContainer: {
-    flex: 1.5,
+    flex: 1.4,
   },
   option: {
-    height: "70%",
+    height: "75%",
     width: scaleNumber(150),
-    borderColor: 'rgba(0, 0, 0, 0.7)',
+    borderColor: 'rgba(0, 0, 0, 0.4)',
     borderWidth: 2,
     borderRadius: scaleNumber(20),
     margin: 7
