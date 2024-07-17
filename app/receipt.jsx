@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, StyleSheet, Text, Image, TouchableOpacity, Dimensions, PixelRatio, ScrollView, ImageBackground } from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet, Text, Image, TouchableOpacity, Dimensions, PixelRatio, ScrollView } from 'react-native';
 import { useLocalSearchParams, useNavigation } from 'expo-router';
 import AppLoading from 'expo-app-loading';
 import {
@@ -27,6 +27,9 @@ const Reciept = () => {
 
   });
 
+  const [money, setMoney] = useState(params.moneySpentRegular);
+  const [title, setTitle] = useState("");
+
 
   if (!fontsLoaded) {
     return <AppLoading />;
@@ -37,7 +40,7 @@ const Reciept = () => {
       <View style={styles.column}>
 
         <View style={styles.header}>
-
+          <Text style={styles.moneyText}> {money} KM</Text>
         </View>
 
         <View style={styles.optionsContainer}>
@@ -54,7 +57,7 @@ const Reciept = () => {
           <ScrollView horizontal={true}
             showsHorizontalScrollIndicator={false}>
 
-            <TouchableOpacity style={styles.option}>
+            <TouchableOpacity style={styles.option} onPress={ () => setMoney(params.moneySpentRegular) } >
               <View style={styles.optionHeader}>
                 <View style={styles.optionHeaderRow}>
                   <View style={styles.optionHeaderIconSpot}>
@@ -75,7 +78,7 @@ const Reciept = () => {
             </TouchableOpacity>
 
 
-            <TouchableOpacity style={styles.option}>
+            <TouchableOpacity style={styles.option} onPress={ () => setMoney(params.moneySpentRegular2na2) }>
               <View style={styles.optionHeader}>
                 <View style={styles.optionHeaderRow}>
                   <View style={styles.optionHeaderIconSpot}>
@@ -95,7 +98,7 @@ const Reciept = () => {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.option}>
+            <TouchableOpacity style={styles.option} onPress={ () => setMoney(params.moneySpentHappy) }>
               <View style={styles.optionHeader}>
                 <View style={styles.optionHeaderRow}>
                   <View style={styles.optionHeaderIconSpot}>
@@ -115,7 +118,7 @@ const Reciept = () => {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.option}>
+            <TouchableOpacity style={styles.option} onPress={ () => setMoney(params.moneySpentHappy2na2) }>
               <View style={styles.optionHeader}>
                 <View style={styles.optionHeaderRow}>
                   <View style={styles.optionHeaderIconSpot}>
@@ -140,7 +143,7 @@ const Reciept = () => {
         </View>
 
         <Text style={[styles.textInfo, {
-          padding: scaleNumber(10),
+          paddingHorizontal: scaleNumber(10),
           fontSize: scaleNumber(21),
           paddingBottom: scaleNumber(20)
         }]}>
@@ -207,6 +210,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#00b386',
     borderTopRightRadius: scaleNumber(20),
     borderBottomStartRadius: scaleNumber(20),
+  },
+  moneyText: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    paddingLeft: scaleNumber(15),
+    paddingBottom: scaleNumber(10),
+    fontSize: scaleNumber(32),
   },
   optionsContainer: {
     flex: 1.5,
