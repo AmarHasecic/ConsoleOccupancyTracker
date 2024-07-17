@@ -40,19 +40,47 @@ const Reciept = () => {
 
         </View>
 
+        <View style={styles.optionsContainer}>
 
+          <Text style={[styles.textInfo, {
+            padding: scaleNumber(10),
+            fontSize: scaleNumber(21),
+            paddingTop: scaleNumber(30),
+            paddingBottom: scaleNumber(12)
+          }]}>
+            Način izračuna cijene
+          </Text>
 
-        <ScrollView horizontal={true}
-          showsHorizontalScrollIndicator={false}>
+            <ScrollView horizontal={true}
+              showsHorizontalScrollIndicator={false}>
 
+              <View style={styles.option}>
 
+              </View>
+              <View style={styles.option}>
 
-        </ScrollView>
+              </View>
+              <View style={styles.option}>
 
+              </View>
+              <View style={styles.option}>
 
+              </View>
+
+            </ScrollView>
+        
+        </View>
 
         <View style={styles.containerInfo}>
-          
+
+          <Text style={[styles.textInfo, {
+            padding: scaleNumber(10),
+            fontSize: scaleNumber(21),
+            marginBottom: scaleNumber(12)
+          }]}>
+            Informacije
+          </Text>
+
           <View style={styles.row}>
             <Image
               style={styles.icon}
@@ -105,15 +133,26 @@ const styles = StyleSheet.create({
   },
   header: {
     width: "100%",
-    height: "15%",
-    backgroundColor: '#1affa3'
+    height: "20%",
+    backgroundColor: '#1affa3',
+    borderTopRightRadius: scaleNumber(20),
+    borderBottomStartRadius: scaleNumber(20),
+  },
+  optionsContainer: {
+    flex: 1.5,
+  },
+  option: {
+    height: "70%",
+    width: scaleNumber(150),
+    borderColor: 'rgba(0, 0, 0, 0.7)',
+    borderWidth: 2,
+    borderRadius: scaleNumber(20),
+    margin: 7
   },
   containerInfo: {
     flex: 1,
     flexDirection: 'column',
-    width: "100%",
-    height: "50%",
-    gap: 5
+    gap: 7,
   },
   row: {
     flex: 1,
@@ -121,29 +160,30 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   icon: {
-    flex: 1,
+    flex: 2,
     width: '100%',
     height: '100%',
     resizeMode: "contain",
   },
   iconLogo: {
-    flex: 1,
+    flex: 2,
     width: '87%',
     height: '87%',
     resizeMode: "contain",
   },
   textContainer: {
-    flex: 3,
+    flex: 4,
     justifyContent: 'center',
-    height: 100
+    height: 100,
+    paddingRight: scaleNumber(50)
   },
   textInfo: {
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 17,
     color: 'rgba(0, 0, 0, 0.7)',
   },
   blank: {
-    flex: 2,
+    flex: 1,
   },
   buttonContainer: {
     position: 'absolute',
