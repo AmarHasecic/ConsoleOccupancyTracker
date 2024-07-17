@@ -6,18 +6,6 @@ import {
   useFonts,
   Oswald_300Light,
 } from '@expo-google-fonts/oswald';
-import {
-  Lato_100Thin,
-  Lato_100Thin_Italic,
-  Lato_300Light,
-  Lato_300Light_Italic,
-  Lato_400Regular,
-  Lato_400Regular_Italic,
-  Lato_700Bold,
-  Lato_700Bold_Italic,
-  Lato_900Black,
-  Lato_900Black_Italic,
-} from '@expo-google-fonts/lato';
 
 
 const scaleNumber = (size) => {
@@ -36,17 +24,7 @@ const Reciept = () => {
 
   let [fontsLoaded] = useFonts({
     Oswald_300Light,
-    Lato_100Thin,
-    Lato_100Thin_Italic,
-    Lato_300Light,
-    Lato_300Light_Italic,
-    Lato_400Regular,
-    Lato_400Regular_Italic,
-    Lato_700Bold,
-    Lato_700Bold_Italic,
-    Lato_900Black,
-    Lato_900Black_Italic,
-
+  
   });
 
 
@@ -55,62 +33,20 @@ const Reciept = () => {
   } else {
 
   return (
-    <ImageBackground
-    source={require('../assets/images/background.jpg')}
-    style={styles.background}
-    >
-        <View style={styles.column}>
 
-          <View style={styles.moneyBox}>
-            <ScrollView horizontal={true} 
-                        showsHorizontalScrollIndicator={false}>
-              
-        
+   <View style={styles.column}>
 
-              <ImageBackground style={styles.paymentCard}
-                               imageStyle={styles.imageStyle}
-                               source={require('../assets/images/orangeCard.jpg')}> 
+       <View style={styles.header}>
 
-                <Text style={[styles.paymentCardHeading, {
-                  fontFamily: 'Oswald_300Light',
-                }]}>
-                  REGULARNI SATI
-                </Text>
+       </View>
 
-                <View style={styles.paymentCardContent}>
-                    <Image 
-                      style={styles.paymentCardIcon}
-                      source={require('../assets/images/sad.png')}
-                    />
-                    <Text style={[styles.paymentCardContentText, {fontFamily: 'Lato_400Regular_Italic'}]}>
-                        {params.moneySpentRegular} KM
-                    </Text>
-                </View>
-              </ImageBackground>
-              
-              <ImageBackground style={styles.paymentCard}
-                               imageStyle={styles.imageStyle}
-                               source={require('../assets/images/greenCard.jpg')}> 
+       <ScrollView horizontal={true} 
+                   showsHorizontalScrollIndicator={false}>
+          
 
-                <Text style={[styles.paymentCardHeading, {
-                  fontFamily: 'Oswald_300Light',
-                }]}>
-                  HAPPY HOUR
-                </Text>
 
-                <View style={styles.paymentCardContent}>
-                    <Image 
-                      style={styles.paymentCardIcon}
-                      source={require('../assets/images/smiley.png')}
-                    />
-                    <Text style={[styles.paymentCardContentText, {fontFamily: 'Lato_400Regular_Italic'}]}>
-                        {params.moneySpentHappy} KM
-                    </Text>
-                </View>
-              </ImageBackground>
+       </ScrollView> 
 
-            </ScrollView>
-          </View>
 
         <View style={styles.lowerContainer}> 
 
@@ -155,7 +91,6 @@ const Reciept = () => {
             </View>
           </View>
         </View>
-      </ImageBackground>
   );
   }  
 }
@@ -164,13 +99,6 @@ const styles = StyleSheet.create({
   column: {
     flex: 1,
     flexDirection: 'column',
-  },
-  moneyBox: {
-    backgroundColor: 'transparent',
-    height: scaleNumber(300), 
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: scaleNumber(7)
   },
   time: {
     flex: 1,
@@ -245,45 +173,6 @@ const styles = StyleSheet.create({
   lowerContainer: {
     flex: 1,
     marginTop: scaleNumber(30)
-  },
-  paymentCard: {
-    width: scaleNumber(320),
-    borderRadius: scaleNumber(30),
-    marginVertical: scaleNumber(35),
-    marginHorizontal: scaleNumber(5),
-    backgroundColor: '#006666'
-  },
-  paymentCardHeading: {
-    color: 'white',
-    fontSize: scaleNumber(22),
-    paddingTop: scaleNumber(10),
-    paddingLeft: scaleNumber(30)
-  },
-  background: {
-    flex: 1,
-    resizeMode: 'contain',
-    justifyContent: 'center',
-
-  },
-  paymentCardContent:  {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  paymentCardContentText:  {
-   fontSize: scaleNumber(50),
-   fontWeight: 'bold',
-   color: 'white',
-   flexDirection: 'row',
-  },
-  imageStyle: {
-    borderRadius: scaleNumber(30),  
-    overflow: 'hidden', 
-  },
-  paymentCardIcon: {
-    width: '50%', 
-    height: '50%',
-    resizeMode: "contain",
   }
 });
 
