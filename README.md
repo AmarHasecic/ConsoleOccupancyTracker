@@ -10,9 +10,10 @@ This is a mobile application designed to track the time of a PlayStation console
 ## UI Examples
 
 <div style="display: flex; align-items: center;">
-  <img src="https://github.com/user-attachments/assets/3a062862-d90e-4754-830e-b9db0992c225" alt="First Image" width="200" height="200">
-  <img src="https://github.com/user-attachments/assets/e3c7c230-c5d0-48ac-9c09-db5a1b42b7b9" alt="Second Image" width="200" height="200">
+  <img src="https://github.com/user-attachments/assets/3a062862-d90e-4754-830e-b9db0992c225" alt="First Image" width="200" height="400">
+  <img src="https://github.com/user-attachments/assets/e3c7c230-c5d0-48ac-9c09-db5a1b42b7b9" alt="Second Image" width="200" height="400">
 </div>
+
 
 
 
