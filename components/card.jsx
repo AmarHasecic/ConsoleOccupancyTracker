@@ -93,14 +93,19 @@ const Card = ({ consoleNumber}) => {
                           setIsStopwatchStart(false);
                           setResetStopwatch(true);
 
-                          const [hours, minutes, seconds] = stopwatchTime.split(':');
-                          var moneyRegular = 5*(hours + minutes/60);
-                          var moneyHappyHour = 3*(hours + minutes/60);
-                          var moneyRegular2na2 = 7*(hours + minutes/60);
+                          let [hours, minutes, seconds] = stopwatchTime.split(':');
 
-                          var roundedMoneyeRegular = moneyRegular.toFixed(2);
-                          var roundedMoneyHappyHour = moneyHappyHour.toFixed(2);
-                          var roundedmoneyRegular2na2 = moneyRegular2na2.toFixed(2);
+                          hours = parseInt(hours)
+                          minutes = parseInt(minutes)
+
+                          let moneyRegular = 5*(hours + minutes/60);
+                          let moneyHappyHour = 3*(hours + minutes/60);
+                          let moneyRegular2na2 = 7*(hours + minutes/60);
+
+                          let roundedMoneyeRegular = moneyRegular.toFixed(2);
+                          let roundedMoneyHappyHour = moneyHappyHour.toFixed(2);
+                          let roundedmoneyRegular2na2 = moneyRegular2na2.toFixed(2);
+
 
                           router.push({pathname: "/receipt", params: {
                             consoleNum: consoleNumber, 

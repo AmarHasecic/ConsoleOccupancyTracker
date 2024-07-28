@@ -68,7 +68,7 @@ const Reciept = () => {
             paddingTop: scaleNumber(30),
             paddingBottom: scaleNumber(15)
           }]}>
-            Način izračuna cijene
+            Način računanja
           </Text>
 
           <ScrollView horizontal={true}
