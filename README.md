@@ -5,7 +5,7 @@ This is a mobile application designed to track the time of a PlayStation console
 
 ## Features
 - **Time Tracking:** Allows users to start and stop a timer to track the duration of PlayStation console usage.
-- **User Interface:** Built with React Native and Expo4
+- **User Interface:** Built with React Native and Expo
 
 ## UI Examples
 
