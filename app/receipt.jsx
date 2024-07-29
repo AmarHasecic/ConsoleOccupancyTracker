@@ -38,6 +38,10 @@ const Reciept = () => {
   const [title, setTitle] = useState("Regular");
   const [icon, setIcon] = useState('regular');
 
+  const [clickedOptionOne, setClickedOptionOne] = useState(true);
+  const [clickedOptionTwo, setClickedOptionTwo] = useState(false);
+  const [clickedOptionThree, setClickedOptionThree] = useState(false);
+  const [clickedOptionFour, setClickedOptionFour] = useState(false);
 
 
   if (!fontsLoaded) {
@@ -74,10 +78,14 @@ const Reciept = () => {
           <ScrollView horizontal={true}
             showsHorizontalScrollIndicator={false}>
 
-            <TouchableOpacity style={styles.option} onPress={() => {
+            <TouchableOpacity style={clickedOptionOne? styles.optionHighlighted : styles.option} onPress={() => {
               setMoney(params.moneySpentRegular)
               setTitle("Regular")
               setIcon('regular')
+              setClickedOptionOne(true)
+              setClickedOptionTwo(false)
+              setClickedOptionThree(false)
+              setClickedOptionFour(false)
             }} >
               <View style={styles.optionHeader}>
                 <View style={styles.optionHeaderRow}>
@@ -99,10 +107,14 @@ const Reciept = () => {
             </TouchableOpacity>
 
 
-            <TouchableOpacity style={styles.option} onPress={() => {
+            <TouchableOpacity style={clickedOptionTwo? styles.optionHighlighted : styles.option} onPress={() => {
               setMoney(params.moneySpentRegular2na2)
               setTitle("Regular +2")
               setIcon('regularPlus2')
+              setClickedOptionOne(false)
+              setClickedOptionTwo(true)
+              setClickedOptionThree(false)
+              setClickedOptionFour(false)
             }} >
               <View style={styles.optionHeader}>
                 <View style={styles.optionHeaderRow}>
@@ -123,10 +135,14 @@ const Reciept = () => {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.option} onPress={() => {
+            <TouchableOpacity style={clickedOptionThree? styles.optionHighlighted : styles.option} onPress={() => {
               setMoney(params.moneySpentHappy)
               setTitle("Happy Hour")
               setIcon('happyHour')
+              setClickedOptionOne(false)
+              setClickedOptionTwo(false)
+              setClickedOptionThree(true)
+              setClickedOptionFour(false)
             }} >
               <View style={styles.optionHeader}>
                 <View style={styles.optionHeaderRow}>
@@ -147,10 +163,14 @@ const Reciept = () => {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.option} onPress={() => {
+            <TouchableOpacity style={clickedOptionFour? styles.optionHighlighted : styles.option} onPress={() => {
               setMoney(params.moneySpentHappy2na2)
               setTitle("Happy Hour +2")
               setIcon('happyHourPlus2')
+              setClickedOptionOne(false)
+              setClickedOptionTwo(false)
+              setClickedOptionThree(false)
+              setClickedOptionFour(true)
             }} >
               <View style={styles.optionHeader}>
                 <View style={styles.optionHeaderRow}>
@@ -278,10 +298,18 @@ const styles = StyleSheet.create({
   option: {
     height: "70%",
     width: scaleNumber(150),
-    borderColor: 'rgba(0, 0, 0, 0.4)',
+    borderColor: 'rgba(0, 0, 0, 0.08)',
     borderWidth: 2,
     borderRadius: scaleNumber(20),
     margin: scaleNumber(5)
+  },
+  optionHighlighted: {
+    height: "70%",
+    width: scaleNumber(150),
+    borderColor: 'rgba(0, 0, 0, 0.08)',
+    borderRadius: scaleNumber(20),
+    margin: scaleNumber(5),
+    backgroundColor: 'rgba(0, 0, 0, 0.08)'
   },
   optionFutter: {
     position: 'absolute',
