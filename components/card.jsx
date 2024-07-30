@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, Alert } from 'react-na
 import { Stopwatch } from 'react-native-stopwatch-timer';
 import { useRouter } from 'expo-router';
 import * as Notifications from 'expo-notifications';
-import * as Permissions from 'expo-permissions';
 
 const Card = ({ consoleNumber }) => {
 
